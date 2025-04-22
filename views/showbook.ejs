@@ -1,0 +1,47 @@
+<% layout('/boilerplate') %>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Book Image Section -->
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="<%= book.image || '/default-image.jpg' %>" 
+                 class="rounded shadow-lg" 
+                 alt="<%= book.title %>" 
+                 style="width: 100%; max-width: 240px; height: auto; max-height: 400px;">
+        </div>
+
+        <!-- Book Details Section -->
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    <h1 class="card-title text-primary"><%= book.title %></h1>
+                    <hr>
+                    <p class="card-text"><strong>Author:</strong> <span class="text-secondary"><%= book.author %></span></p>
+                    <p class="card-text"><strong>Genre:</strong> <span class="badge bg-info text-dark"><%= book.genre %></span></p>
+                    <p class="card-text"><strong>Description:</strong></p>
+                    <p class="text-muted"><%= book.description %></p>
+                    <p class="card-text"><strong>Published:</strong> <span class="text-secondary"><%= book.published ? book.published.toDateString() : 'N/A' %></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col text-center">
+            <form action="/books/<%= book._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger btn-lg">
+                    <i class="bi bi-trash"></i> Delete Book
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Back Button -->
+    <div class="row mt-4 mb-3">
+        <div class="col text-center">
+            <a href="/books/show" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-arrow-left"></i> Back to Books
+            </a>
+        </div>
+    </div>
+</div>

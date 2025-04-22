@@ -1,0 +1,102 @@
+<% layout('/boilerplate') %>
+
+<!-- Page container with flexbox layout for centering content -->
+<div class="container">
+  <!-- Heading Section -->
+  <h1>Welcome to the E-Book Library</h1>
+  
+  <!-- Buttons for navigation with improved styling -->
+  <div class="button-container">
+    <a href="/books/add">
+      <button class="main-btn add-btn">Add a New Book</button>
+    </a>
+    <a href="/books/show">
+      <button class="main-btn search-btn">Search for Books</button>
+    </a>
+  </div>
+</div>
+<style>
+    /* General body styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensures the body takes at least the full viewport height */
+    }
+  
+    /* Wrapper for the whole page to allow footer to stick to the bottom */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; /* Allows the main content to grow and push the footer down */
+    }
+  
+    /* Container to center content */
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1; /* Ensures content area grows while leaving space for footer */
+      text-align: center;
+      padding: 20px;
+    }
+  
+    /* Heading styling */
+    h1 {
+      font-size: 36px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    /* Button container styling */
+    .button-container {
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+    }
+  
+    /* Common button styling */
+    .main-btn {
+      padding: 15px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+  
+    /* Add Book Button Specific Styling */
+    .add-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+  
+    .add-btn:hover {
+      background-color: #45a049;
+    }
+  
+    /* Search Books Button Specific Styling */
+    .search-btn {
+      background-color: #007BFF;
+      color: white;
+    }
+  
+    .search-btn:hover {
+      background-color: #0056b3;
+    }
+  
+    /* Footer Styling */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: auto; /* Pushes footer to the bottom of the page */
+      width: 100%;
+    }
+  </style>

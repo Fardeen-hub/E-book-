@@ -1,0 +1,28 @@
+<% layout('/boilerplate') %>
+<form class="validated-form " action="/books/add" method="POST">
+    <div class="mt-4 mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="book[title]" required>
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="author" name="book[author]" required>
+    </div>
+    <div class="mb-3">
+        <label for="genre" class="form-label">Genre</label>
+        <input type="text" class="form-control" id="genre" name="book[genre]" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="book[description]" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image Link</label>
+        <input type="text" class="form-control" id="image" name="book[image]" required>
+    </div>
+    <div class="mb-3">
+        <label for="published" class="form-label">Published Date</label>
+        <input type="date" class="form-control" id="published" name="book[published]" required>
+    </div>
+    <button class="btn btn-success mb-3">Add</button>
+</form>

@@ -1,0 +1,53 @@
+<% layout('/boilerplate') %>
+
+<h1>Search Book</h1>
+<div class="d-flex justify-content-center p-2">
+    <input type="text" name="title" id="title" class="form-control border-success " placeholder="Search book by title">
+</div>
+
+<div class="mt-4 text-center" id="books-container">
+    <% if (books.length > 0) { %>
+        <h3>Books</h3>
+        <hr>
+        <div class="row justify-content-center mb-4">
+            <% books.forEach(book => { %>
+                <div class="col-md-3 mb-4">
+                    <a href="/books/<%= book._id %>">
+                        <img src="<%= book.image || '/default-image.jpg' %>" class="img-fluid rounded" alt="<%= book.title %>" style="width: 100%; max-width: 240px; height: auto; max-height: 400px;">
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p>No books found.</p>
+    <% } %>
+</div>
+
+<script>
+    const searchInput = document.getElementById('title');
+    const booksContainer = document.getElementById('books-container');
+
+    searchInput.addEventListener('input', async () => {
+        const query = searchInput.value;
+
+        const response = await fetch(`/books/search?title=${encodeURIComponent(query)}`);
+        const books = await response.json();
+
+        if (books.length > 0) {
+            booksContainer.innerHTML = `
+                <h3>Books</h3>
+                <div class="row justify-content-center">
+                    ${books.map(book => `
+                        <div class="col-md-3 mb-4">
+                            <a href="/books/${book._id}">
+                                <img src="${book.image || '/default-image.jpg'}" class="img-fluid rounded" alt="${book.title}" style="width: 100%; max-width: 240px; height: auto; max-height: 400px;">
+                            </a>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        } else {
+            booksContainer.innerHTML = `<p>No books found.</p>`;
+        }
+    });
+</script>
